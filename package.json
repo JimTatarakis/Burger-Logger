@@ -1,0 +1,26 @@
+{
+  "name": "burger-logger",
+  "version": "1.0.0",
+  "description": "burger logger for cohort",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JimTatarakis/Burger-Logger.git"
+  },
+  "author": "Jim Tatarakis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JimTatarakis/Burger-Logger/issues"
+  },
+  "homepage": "https://github.com/JimTatarakis/Burger-Logger#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "sequelize": "^5.8.10",
+    "sequelize-cli": "^5.5.0"
+  }
+}
