@@ -2,27 +2,27 @@
 // =============================================================
 // Sets up the Models
 // =============================================================
-const db = require('./models');
+const db = require('../../models');
 
 // Routes
 // =============================================================
 module.exports = function(app) {
 
     // GET route
-    app.get("/api/Burgers", function(req, res) {
-      db.Burgers.findAll({}).then(function(dbBurger) {
-        res.json(dbBurger);
+    app.get("/api/burgers", function(req, res) {
+      db.Burgers.findAll({}).then( () => {
+        res.json({get:true});
       });
   
     });
   
     // POST route
-    app.post("/api/Burgers", function(req, res) {
+    app.post("/api/burgers", function(req, res) {
       db.Burgers.create({
         name: req.body.name,
-        eaten: req.body.eaten
-      }).then(function(dbBurger) {
-        res.json(dbBurger);
+        eaten: false
+      }).then( () => {
+        res.json({post:true});
       });
   
     });
@@ -34,14 +34,14 @@ module.exports = function(app) {
           id: req.params.id
         }
       })
-        .then(function(dbTodo) {
-          res.json(dbTodo);
+        .then( () => {
+          res.json({delete:true});
         });
   
     });
   
     // PUT route
-    app.put("/api/Burgers", function(req, res) {
+    app.put("/api/Burgers", (req,res) => {
       db.Burgers.update({
         name: req.body.name,
         eaten: req.body.eaten
@@ -50,8 +50,8 @@ module.exports = function(app) {
           id: req.body.id
         }
       })
-        .then(function(dbTodo) {
-          res.json(dbTodo);
+        .then( () => {
+          res.json({update:true});
         });
   
     });
