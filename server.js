@@ -20,6 +20,10 @@ const db = require('./models');
 // =============================================================
 app.use(express.static('public'));
 
+// Requires the API-Routes
+// =============================================================
+require('./routes/api/api-routes.js')(app);
+
 // Sets up Handlebars
 // =============================================================
 const exphbs = require('express-handlebars');
@@ -27,14 +31,22 @@ const exphbs = require('express-handlebars');
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// Requires the API-Routes
+// View Engine Route
 // =============================================================
-require('./routes/api/api-routes.js')(app);
+// GET route
+app.get("/", (res, req) => {
+  // query db then set as variables grab and display
+
+  db.Burgers.findAll().then( data => {data});
+  res.render('index', {
+    burger: db.Burgers.findAll().then( data => { return data})
+  });
+});
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync().then(function() {
-    app.listen(PORT, function() {
-      console.log("App listening on PORT " + PORT);
-    });
+db.sequelize.sync().then(function () {
+  app.listen(PORT, function () {
+    console.log("App listening on PORT " + PORT);
   });
+});

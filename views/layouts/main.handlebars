@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- CSS Styling -->
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/0a6a8a1e29.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Materialize - Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Friend-Finder</title>
+</head>
+
+<body>
+    <!-- NavBar -->
+    <div class="container">
+        <nav>
+            <div class="nav-wrapper blue-grey darken-1">
+                <a href="/" class="brand-logo center">Good-Burger-Logger</a>
+            </div>
+        </nav>
+    </div>
+    <br><br>
+    {{!-- Directions --}}
+    <div class="container">
+        <div class="center white-text blue-grey darken-1">
+            <h4>Directions:</h4>
+            <p>
+                Add a burger to the list.
+            </p>
+            <p>
+                Simply click the button below and eat the burgers!
+            </p>
+            <br>
+        </div>
+    </div>
+    <br><br>
+    {{!-- Add a Burger Form --}}
+    <div class="container">
+        <div class="center">
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="burger-name" class="materialize-textarea"></textarea>
+                            <label for="burger-name">Name of burger</label>
+                        </div>
+                    </div>
+                    <a class="waves-effect waves-light btn modal-trigger blue-grey darken-1" id="add-btn">Add a
+                        burger.</a>
+                </form>
+            </div>
+            <a class="waves-effect waves-light btn modal-trigger blue-grey darken-1" id="eat-btn">Eat the
+                burgers!</a>
+        </div>
+    </div>
+    {{!-- View Insert --}}
+    {{{body}}}
+
+    <!-- JavaScript -->
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="/assets/js/main.js"></script>
+</body>
+
+</html>
