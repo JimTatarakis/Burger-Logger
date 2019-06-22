@@ -6,53 +6,61 @@ const db = require('../../models');
 
 // Routes
 // =============================================================
-module.exports = function(app) {
+module.exports = function (app) {
 
-    // GET route
-    app.get("/api/burgers", function(req, res) {
-      db.Burgers.findAll({}).then( () => {
-        res.json({get:true});
+  // GET route
+  app.get("/api/burgers", function (req, res) {
+    db.Burgers.findAll({}).then(() => {
+      res.json({ get: true });
+    });
+
+  });
+
+  // GET route for not eaten burgers
+  app.get("/api/burgers/noteaten", function (req, res) {
+    db.Burgers.findAll({where:{ eaten:false }}).then((data) => {
+      res.json({data});
+    });
+
+  });
+
+  // POST route
+  app.post("/api/burgers", function (req, res) {
+    db.Burgers.create({
+      name: req.body.name,
+      eaten: false
+    }).then(() => {
+      res.json({ post: true });
+    });
+
+  });
+
+  // DELETE route
+  app.delete("/api/burgers/eaten", function (req, res) {
+    db.Burgers.destroy({
+      where: {
+        eaten: true
+      }
+    })
+      .then(() => {
+        res.json({ delete: true });
       });
-  
-    });
-  
-    // POST route
-    app.post("/api/burgers", function(req, res) {
-      db.Burgers.create({
-        name: req.body.name,
-        eaten: false
-      }).then( () => {
-        res.json({post:true});
-      });
-  
-    });
-  
-    // DELETE route
-    app.delete("/api/Burgers/:id", function(req, res) {
-      db.Burgers.destroy({
-        where: {
-          id: req.params.id
-        }
-      })
-        .then( () => {
-          res.json({delete:true});
-        });
-  
-    });
-  
-    // PUT route
-    app.put("/api/Burgers", (req,res) => {
-      db.Burgers.update({
-        name: req.body.name,
-        eaten: req.body.eaten
-      }, {
+
+  });
+
+  // PUT route
+  app.put("/api/burgers", (req, res) => {
+    db.Burgers.update({
+      eaten: req.body.eaten
+    }, {
         where: {
           id: req.body.id
         }
       })
-        .then( () => {
-          res.json({update:true});
-        });
-  
-    });
-  };
+      .then(() => {
+        console.log('this is working!');
+        res.json({ update: true });
+      });
+
+  });
+};

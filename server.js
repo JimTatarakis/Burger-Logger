@@ -34,12 +34,11 @@ app.set("view engine", "handlebars");
 // View Engine Route
 // =============================================================
 // GET route
-app.get("/", (res, req) => {
+app.get("/", (req,res) => {
   // query db then set as variables grab and display
 
-  db.Burgers.findAll().then( data => {data});
-  res.render('index', {
-    burger: db.Burgers.findAll().then( data => { return data})
+  db.Burgers.findAll().then( data => {
+    res.render('index', {burger:data})
   });
 });
 
